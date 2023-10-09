@@ -1,0 +1,46 @@
+<div class="container">
+      <div class="row hedding m-0 pl-3 pt-0 pb-3">
+        <h2>Product Details :</h2>
+      </div>
+      <div *ngIf="product" class="row m-0">
+          <div class="col-lg-4 left-side-product-box pb-3">
+              <img [src]="product.image" class="border p-5">
+          </div>
+          <div class="col-lg-8">
+              <div class="right-side-pro-detail border p-3 m-0">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <span>{{ product.category }}</span>
+                          <p class="m-0 p-0">{{ product.title }}</p>
+                      </div>
+                      <div class="col-lg-12">
+                          <p class="m-0 pt-2 pb-2 price-pro">${{ product.price }}</p>
+                          <hr class="p-0 m-0">
+                      </div>
+                      <div class="col-lg-12 pt-2">
+                          <h5>Product Detail</h5>
+                          <span>{{ product.description }}</span>
+                          <hr class="m-0 pt-2 mt-2">
+                      </div>
+                      <div class="col-lg-12">
+                          <p class="tag-section"><strong>Tag : </strong><a href="">{{ product.category }}</a><a href="">,{{ product.title }}</a></p>
+                      </div>
+                      <div class="col-lg-12">
+                          <h6>Quantity :</h6>
+                          <input type="number" class="form-control text-center w-100" [(ngModel)]="quantity">
+                      </div>
+                      <div class="col-lg-12 mt-3">
+                          <div class="row">
+                              <div class="col-lg-6 pb-2">
+                                  <a (click)="addProductToCart()" class="btn btn-danger w-100">Add To Cart</a>
+                              </div>
+                              <div class="col-lg-6">
+                                  <a href="#" class="btn btn-success w-100">Shop Now</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

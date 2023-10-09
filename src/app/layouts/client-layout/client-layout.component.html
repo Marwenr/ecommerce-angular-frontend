@@ -1,0 +1,194 @@
+<div class="banner_bg_main mb-5">
+  <div class="container">
+    <div class="header_section_top">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="custom_menu">
+            <ul>
+              <li><a routerLink="/">Best Sellers</a></li>
+              <li><a routerLink="/">Gift Ideas</a></li>
+              <li><a routerLink="/">New Releases</a></li>
+              <li><a routerLink="/">Today's Deals</a></li>
+              <li><a routerLink="/">Customer Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logo_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="logo">
+            <a routerLink="/"><img src="assets/client/images/logo.png" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="header_section">
+    <div class="container">
+      <div class="containt_main">
+        <div class="dropdown">
+          <a
+            class="btn btn-dark"
+            type="button"
+            routerLink="/"
+          >
+            Home
+          </a>
+        </div>
+        <div class="main">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search this blog"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                style="background-color: #f26522; border-color: #f26522"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="header_box">
+          <div class="login_menu">
+            <ul>
+              <li>
+                <a routerLink="cart">
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                  <span class="padding_10">Cart</span></a
+                >
+              </li>
+              <li>
+                <a *ngIf="!this.usersService.isLoggedIn()" routerLink="login">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <span class="padding_10">Login</span></a
+                >
+                <a *ngIf="this.usersService.isLoggedIn()" role="button" (click)="logout()" style="color: #d90000;">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <span class="padding_10">LogOut</span></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner_section layout_padding">
+    <div class="container">
+      <div id="my_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 class="banner_taital">
+                  Get Start <br />Your favriot shoping
+                </h1>
+                <div class="buynow_bt"><a routerLink="/">Buy Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 class="banner_taital">
+                  Get Start <br />Your favriot shoping
+                </h1>
+                <div class="buynow_bt"><a routerLink="/">Buy Now</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 class="banner_taital">
+                  Get Start <br />Your favriot shoping
+                </h1>
+                <div class="buynow_bt"><a routerLink="/">Buy Now</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#my_slider"
+          role="button"
+          data-slide="prev"
+        >
+          <i class="fa fa-angle-left"></i>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#my_slider"
+          role="button"
+          data-slide="next"
+        >
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="mb-5"><router-outlet></router-outlet></div>
+
+
+<div class="footer_section layout_padding">
+  <div class="container">
+    <div class="footer_logo">
+      <a routerLink="/"
+        ><img src="assets/client/images/logo.png"
+      /></a>
+    </div>
+    <div class="input_bt">
+      <input
+        type="text"
+        class="mail_bt"
+        placeholder="Your Email"
+        name="Your Email"
+      />
+      <span class="subscribe_bt" id="basic-addon2"
+        ><a href="#">Subscribe</a></span
+      >
+    </div>
+    <div class="footer_menu">
+      <ul>
+        <li><a routerLink="/">Best Sellers</a></li>
+        <li><a routerLink="/">Gift Ideas</a></li>
+        <li><a routerLink="/">New Releases</a></li>
+        <li><a routerLink="/">Today's Deals</a></li>
+        <li><a routerLink="/">Customer Service</a></li>
+      </ul>
+    </div>
+    <div class="location_main">
+      Email : <a>Marwenrhim@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<div class="copyright_section">
+  <div class="container">
+    <p class="copyright_text">
+      © 2020 All Rights Reserved. Design by
+      <a href="https://html.design" target="_blank">Free html Templates</a>,
+      Code by
+      <a
+        href="https://www.linkedin.com/in/marwen-rhim-900787279/"
+        target="_blank"
+        >Marwen</a
+      >
+    </p>
+  </div>
+</div>

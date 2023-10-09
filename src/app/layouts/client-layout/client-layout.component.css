@@ -1,0 +1,13 @@
+@media (max-width: 991px) {
+  .containt_main {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .dropdown {
+    display: block!important;
+    margin: auto;
+  }
+}

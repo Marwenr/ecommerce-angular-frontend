@@ -1,0 +1,15 @@
+.box_main{
+  position: relative;
+}
+.product {
+  width: 0;
+  height: 100%;
+  background-color:#f26522;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 300ms;
+}
+.box_main:hover .product {
+  width: 5px;
+}

@@ -1,0 +1,51 @@
+<div class="mb-4 d-flex flex-wrap">
+  <div class="d-flex align-items-center" style="width: 200px">
+    <label for="from" class="m-0">From:</label>
+    <input type="date" name="from" id="from" class="form-control bg-light small ml-2" [(ngModel)]="filterBy.dateFrom" />
+  </div>
+  <div class="d-flex align-items-center ml-5" style="width: 200px">
+    <label for="to" class="m-0">To:</label>
+    <input type="date" name="to" id="to" class="form-control bg-light small ml-2" [(ngModel)]="filterBy.dateTo" />
+  </div>
+  <div class="d-flex align-items-center ml-5" style="width: 200px">
+    <label for="user" class="m-0" style="width: 40%">User Id:</label>
+    <input type="number" name="user" id="user" class="form-control bg-light small ml-2" [(ngModel)]="filterBy.userId" />
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">User Id</th>
+      <th scope="col">Date</th>
+      <th scope="col">Products Id</th>
+      <th scope="col">Products Quantity</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cart of filtredCarts()">
+      <td>{{ cart.userId }}</td>
+      <td>{{ cart.date }}</td>
+      <td>
+        <tr *ngFor="let product of cart.products">
+          {{
+            product.productId
+          }}
+        </tr>
+      </td>
+      <td>
+        <tr *ngFor="let product of cart.products">
+          {{
+            product.quantity
+          }}
+        </tr>
+      </td>
+      <td class="d-flex">
+        <button type="button" class="btn btn-danger" (click)="delete(cart.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

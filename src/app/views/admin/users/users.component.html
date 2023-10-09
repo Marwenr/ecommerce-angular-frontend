@@ -1,0 +1,47 @@
+<div class="mb-4 d-flex flex-wrap">
+  <div class="d-flex align-items-center ml-5" style="width: 200px">
+    <label for="id" class="m-0" style="width: 40%">Id:</label>
+    <input type="number" name="id" id="id" class="form-control bg-light small ml-2" [(ngModel)]="filterBy.id" />
+  </div>
+  <div class="d-flex align-items-center ml-5" style="width: 200px">
+    <label for="username" class="m-0" style="width: 40%">Username:</label>
+    <input type="text" name="username" id="username" class="form-control bg-light small ml-2" [(ngModel)]="filterBy.username" />
+  </div>
+  <div class="d-flex align-items-center ml-5" style="width: 200px">
+    <label for="name" class="m-0" style="width: 40%">Name:</label>
+    <input type="text" name="name" id="name" class="form-control bg-light small ml-2" [(ngModel)]="filterBy.name" />
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Email</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Address: City</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of filtredUsers()">
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.name.firstname }} {{ user.name.lastname }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.address.city }}</td>
+      <td class="d-flex">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="delete(user.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

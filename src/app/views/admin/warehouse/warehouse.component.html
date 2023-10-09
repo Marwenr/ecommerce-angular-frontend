@@ -1,0 +1,291 @@
+<div class="d-flex justify-content-end mb-4">
+  <button
+    type="button"
+    class="btn btn-info"
+    data-toggle="modal"
+    data-target="#addArticle"
+  >
+    Add Product
+  </button>
+</div>
+
+<div class="mb-4 d-flex flex-wrap">
+  <div class="input-group mb-3" style="width: 200px">
+    <input
+      type="text"
+      class="form-control bg-light border-0 small"
+      placeholder="Search for..."
+      aria-label="Search"
+      aria-describedby="basic-addon2"
+      [(ngModel)]="filtredData.name"
+    />
+    <div class="input-group-append">
+      <span class="btn btn-info">
+        <i class="fas fa-search fa-sm"></i>
+      </span>
+    </div>
+  </div>
+  <select
+    class="form-control ml-3 text-info"
+    [(ngModel)]="filtredData.category"
+    style="width: 200px"
+  >
+    <option selected disabled="disabled">All Category</option>
+    <option *ngFor="let cat of allCategories" [ngValue]="cat">
+      {{ cat }}
+    </option>
+  </select>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filtredProducts()">
+      <td>{{ product.title }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.price }}</td>
+      <td class="d-flex">
+        <button
+          type="button"
+          class="btn btn-success mr-1"
+          data-toggle="modal"
+          data-target="#updateArticle"
+          (click)="modalUpdate(product.id ,product)"
+        >
+          Update
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="delete(product.id)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="modal fade"
+  id="addArticle"
+  tabindex="-1"
+  aria-labelledby="addArticle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Article</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="user" #f="ngForm" (ngSubmit)="add(f)">
+          <div class="form-group">
+            <label>Name of Artice:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Name of Artice"
+              name="title"
+              #title="ngModel"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>price:</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Price"
+              name="price"
+              #price="ngModel"
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label>description:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Description"
+              name="description"
+              #description="ngModel"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>category:</label>
+            <select
+              class="form-control"
+              name="category"
+              #category="ngModel"
+              ngModel
+              required
+            >
+              <option selected disabled="disabled">All Category</option>
+              <option
+                *ngFor="let category of allCategories"
+                [ngValue]="category"
+              >
+                {{ category }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Image of Article:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Image Url"
+              name="image"
+              #image="ngModel"
+              ngModel
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-info" [disabled]="f.invalid">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="updateArticle"
+  tabindex="-1"
+  aria-labelledby="updateArticle"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Article</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="user" #form="ngForm" (ngSubmit)="update(form)">
+          <div class="form-group">
+            <label>Name of Artice:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Name of Artice"
+              name="title"
+              #title="ngModel"
+              [(ngModel)]="articleSelected.title"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>price:</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Price"
+              name="price"
+              [(ngModel)]="articleSelected.price"
+              #price="ngModel"
+              ngModel
+            />
+          </div>
+          <div class="form-group">
+            <label>description:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Description"
+              name="description"
+              [(ngModel)]="articleSelected.description"
+              #description="ngModel"
+              ngModel
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>category:</label>
+            <select
+              class="form-control"
+              name="category"
+              [(ngModel)]="articleSelected.category"
+              #category="ngModel"
+              ngModel
+              required
+            >
+              <option selected disabled="disabled">All Category</option>
+              <option
+                *ngFor="let category of allCategories"
+                [ngValue]="category"
+              >
+                {{ category }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Image of Article:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Image Url"
+              name="image"
+              [(ngModel)]="articleSelected.image"
+              #image="ngModel"
+              ngModel
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-info" [disabled]="form.invalid">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+    </div>
+  </div>
+</div>

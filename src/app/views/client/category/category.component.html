@@ -1,0 +1,30 @@
+<div class="container">
+  <div
+    class="row justify-content-md-center"
+  >
+    <h1 class="fashion_taital p-5">{{ category }}</h1>
+    <a
+      *ngFor="
+        let product of productsByCategory"
+      class="col-lg-4 col-sm-6"
+      [routerLink]="'/products/'+product.id"
+    >
+      <div class="box_main" style="height: 500px">
+        <div class="product"></div>
+        <h4 class="shirt_text text-truncate">{{ product.title }}</h4>
+        <p class="price_text">Price <span style="color: #262626">$ 30</span></p>
+        <div class="tshirt_img m-0 p-3">
+          <img
+            [src]="product.image"
+            style="width: 270; height: 330px"
+            class="m-auto"
+          />
+        </div>
+        <div class="btn_main">
+          <div class="buy_bt"><a class="ml-auto d-block" routerLink="cart">Buy Now</a></div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+</div>
